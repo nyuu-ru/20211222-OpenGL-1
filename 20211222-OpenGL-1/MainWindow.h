@@ -17,7 +17,7 @@ class MainWindow final: public Window
 {
 protected:
 	double _angle { 0.0 };
-	Model  _cube  { "cube.txt" };
+	Model  _house { "house.txt" };
 
 	virtual void update() override;
 	virtual void setup() override;

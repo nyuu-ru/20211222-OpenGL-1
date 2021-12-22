@@ -15,6 +15,8 @@ MainWindow::MainWindow()
 void MainWindow::setup()
 {
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 	glClearColor(0.5f, 0.7f, 1.f, 1.f);
 
 	glMatrixMode(GL_PROJECTION);
@@ -28,13 +30,13 @@ void MainWindow::render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
-	gluLookAt(3.0, 2.0, 1.5,
+	gluLookAt(4.0, 3.0, 1.5,
 	          0.0, 0.0, 0.0,
 	          0.0, 0.0, 1.0);
 
 	glRotated(_angle, 0.0, 0.0, 1.0);
 
-	_cube.draw();
+	_house.draw();
 
 }
 
