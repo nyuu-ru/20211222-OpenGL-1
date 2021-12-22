@@ -15,6 +15,9 @@
 class MainWindow final: public Window
 {
 protected:
+	double _angle { 0.0 };
+
+	virtual void update() override;
 	virtual void setup() override;
 	virtual void render() override;
 
