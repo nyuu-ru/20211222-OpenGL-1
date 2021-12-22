@@ -21,5 +21,9 @@ void MainWindow::render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-
+	glBegin(GL_TRIANGLES);
+	glVertex2f(  0.0f,  0.8f);
+	glVertex2f(  0.8f, -0.8f);
+	glVertex2f( -0.8f, -0.8f);
+	glEnd();
 }
