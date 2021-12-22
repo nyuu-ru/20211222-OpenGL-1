@@ -19,7 +19,7 @@ public:
 protected:
 	int _width {}, _height {};
 	std::shared_ptr<SDL_Window> _window {};
-	std::shared_ptr<SDL_Renderer> _renderer {};
+	std::shared_ptr<void>       _gl_context {};
 
 	virtual void setup() {}
 	virtual void render() {}

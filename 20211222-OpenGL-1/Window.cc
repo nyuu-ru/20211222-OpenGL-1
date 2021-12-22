@@ -13,25 +13,25 @@ Window::Window(int width, int height)
 {
 	_window = std::shared_ptr<SDL_Window>(
 			SDL_CreateWindow(
-					"SDL Window",
+					"OpenGL Window",
 					SDL_WINDOWPOS_CENTERED,
 					SDL_WINDOWPOS_CENTERED,
-					width, height, 0),
+					width, height, SDL_WINDOW_OPENGL),
 			SDL_DestroyWindow);
 	if (not _window)
 		throw std::runtime_error(
 				std::string("Не могу создать окно: ") +
 				std::string(SDL_GetError()));
 
-	_renderer = std::shared_ptr<SDL_Renderer>(
-			SDL_CreateRenderer(
-					_window.get(), -1,
-					SDL_RENDERER_ACCELERATED |
-					SDL_RENDERER_PRESENTVSYNC),
-			SDL_DestroyRenderer);
-	if (not _renderer)
+	// Хотим использовать OpenGL 2.1
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	_gl_context = std::shared_ptr<void>(
+			SDL_GL_CreateContext(_window.get()),
+			SDL_GL_DeleteContext);
+	if (_gl_context == nullptr)
 		throw std::runtime_error(
-				std::string("Не могу создать рендерер: ") +
+				std::string("Не могу создать контекст OpenGL: ") +
 				std::string(SDL_GetError()));
 }
 
@@ -56,6 +56,6 @@ void Window::main_loop()
 		update();
 
 		render();
-		SDL_RenderPresent(_renderer.get());
+		SDL_GL_SwapWindow(_window.get());
 	}
 }
