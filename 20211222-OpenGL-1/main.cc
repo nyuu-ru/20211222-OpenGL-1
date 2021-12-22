@@ -1,12 +1,12 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-#include "Window.h"
+#include "MainWindow.h"
 
 int main(int, char **)
 {
 	try {
-		Window w;
+		MainWindow w;
 
 		w.main_loop();
 	} catch (const std::exception &e) {
