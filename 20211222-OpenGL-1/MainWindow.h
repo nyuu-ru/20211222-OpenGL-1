@@ -12,12 +12,14 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "Model.h"
+#include "Texture.h"
 
 class MainWindow final: public Window
 {
 protected:
 	double _angle { 0.0 };
 	Model  _house { "house.txt" };
+	Texture _house_texture { "house.png" };
 
 	virtual void update() override;
 	virtual void setup() override;

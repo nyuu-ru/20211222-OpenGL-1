@@ -17,6 +17,8 @@ void MainWindow::setup()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	glEnable(GL_TEXTURE);
+	glEnable(GL_TEXTURE_2D);
 	glClearColor(0.5f, 0.7f, 1.f, 1.f);
 
 	glMatrixMode(GL_PROJECTION);
@@ -36,6 +38,7 @@ void MainWindow::render()
 
 	glRotated(_angle, 0.0, 0.0, 1.0);
 
+	_house_texture.bind();
 	_house.draw();
 
 }
